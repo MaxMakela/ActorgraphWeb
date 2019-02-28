@@ -1,4 +1,4 @@
-[
+var allActors = [
   {
     "id": "0705356",
     "Name": "Daniel Radcliffe",
@@ -1200,3 +1200,4 @@
     "Oscar": "~"
   }
 ]
+export {allActors}

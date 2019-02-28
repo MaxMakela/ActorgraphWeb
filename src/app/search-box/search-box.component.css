@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.box input[type="text"]{
+.box input[type="text"],button[type="submit"]{
     border: 0;
     background: none;
     display: block;
@@ -23,6 +23,7 @@
     border-radius: 24px;
     transition: 0.25s;
 }
+
 
 .box input[type = "text"]:focus{
     width: 280px;

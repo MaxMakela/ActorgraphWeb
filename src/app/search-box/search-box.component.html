@@ -1,6 +1,9 @@
-<form class="box" action="index.html" method="GET">
+<form class="box" #searchActors="ngForm" (ngSubmit)="submitForm()">
   <h3>We will find the connection between two actors</h3> 
-  <input type="text" autocomplete="off" name="actor1" placeholder="Input first name">
-  <input type="text" autocomplete="off" name="actor2" placeholder="Input second name">
-  <input type="submit" name="" value="Search">
+  <input type="text" name="actor1" placeholder="Input first name" [(ngModel)]="firstActorName">
+  <input type="text" name="actor2" placeholder="Input second name" [(ngModel)]="secondActorName">
+  <button type="submit">Search</button>
 </form>
+
+formActor1: {{ firstActorName }}, formActor2: {{ secondActorName }} <br/>
+found: {{ firstActor }}, found: {{ secondActor }}
