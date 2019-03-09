@@ -101,8 +101,7 @@ export class SearchBoxComponent implements OnInit {
     
 
   searchActor(name: string): string {
-    return this.actors.some(function(el) {return this.levenshtein(el.Name, name)<=3}) ? this.actors.find(x => x.Name == name).id : "";
-    //  this.levenshtein(el.Name, name) < 3
+    return this.actors.some(function(el) {return el.Name === name;}) ? this.actors.find(x => x.Name == name).id : "";
   }
 
   submitForm() {
@@ -112,7 +111,7 @@ export class SearchBoxComponent implements OnInit {
     this.test_levenshtein = this.levenshtein(this.firstActorName, this.secondActorName);
     
     console.log(this.mistakesFix(this.firstActorName));
-    console.log(this.getNameVariants(this.firstActorName));
+    console.log(this.mistakesFix(this.firstActorName));
   }
 
 }
