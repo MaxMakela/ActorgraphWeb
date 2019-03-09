@@ -85,9 +85,20 @@ export class SearchBoxComponent implements OnInit {
     return v0[s1_len];
   } 
 
-  // mistakesFix(searchingName){
-  //   return this.actors.some(function(el) {return this.levenshtein(el.Name, searchingName) <= 3;});
-  // }
+  mistakesFix(searchingName){
+    return this.actors.some(function(el) {return this.levenshtein(el.Name, searchingName) <= 3;});
+  }
+
+  getNameVariants(search) {
+        var values = [];
+        this.actors.forEach(function(item) {
+          if (this.levenshtein(item.Name, search)<=3) {
+            values.push(item.Name);
+          }
+        });
+        return values;
+    };
+    
 
   searchActor(name: string): string {
     return this.actors.some(function(el) {return el.Name == name;}) ? this.actors.find(x => x.Name == name).id : "";
@@ -100,8 +111,8 @@ export class SearchBoxComponent implements OnInit {
     this.secondActor = this.searchActor(this.secondActorName);
     this.test_levenshtein = this.levenshtein(this.firstActorName, this.secondActorName);
     
-    //console.log(this.mistakesFix(this.firstActor));
-
+    console.log(this.mistakesFix(this.firstActorName));
+    console.log(this.getNameVariants(this.firstActorName));
   }
 
 }
