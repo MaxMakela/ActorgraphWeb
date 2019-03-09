@@ -101,7 +101,7 @@ export class SearchBoxComponent implements OnInit {
     
 
   searchActor(name: string): string {
-    return this.actors.some(function(el) {return el.Name == name;}) ? this.actors.find(x => x.Name == name).id : "";
+    return this.actors.some(function(el) {return this.levenshtein(el.Name, name)<=3}) ? this.actors.find(x => x.Name == name).id : "";
     //  this.levenshtein(el.Name, name) < 3
   }
 
