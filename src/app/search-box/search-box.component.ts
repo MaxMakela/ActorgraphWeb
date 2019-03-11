@@ -85,14 +85,13 @@ export class SearchBoxComponent implements OnInit {
     return v0[s1_len];
   } 
 
-  mistakesFix(searchingName){
-    return this.actors.find(function(el) {return this.levenshtein(el.Name, searchingName) <= 3;});
+  mistakesFix(searchingName) {
+    return this.actors.find(el => this.levenshtein(el.Name, searchingName) <= 3).Name;
   }
-
   getNameVariants(search) {
         var values = [];
-        this.actors.find(function(item) {
-          if (this.levenshtein(item.Name, search)<=3) {
+        this.actors.find(item => {
+          if (this.levenshtein(item.Name, search)<=8) {
             values.push(item.Name);
           }
         });
@@ -106,11 +105,12 @@ export class SearchBoxComponent implements OnInit {
 
   submitForm() {
     console.log(this.firstActorName, this.secondActorName);
-    this.firstActor = this.searchActor(this.firstActorName);
-    this.secondActor = this.searchActor(this.secondActorName);
+    this.firstActor = this.searchActor(this.mistakesFix(this.firstActorName));
+    this.secondActor = this.searchActor(this.mistakesFix(this.firstActorName));
     
     console.log(this.mistakesFix(this.firstActorName));
     console.log(this.mistakesFix(this.firstActorName));
+    console.log(this.getNameVariants(this.firstActorName));
   }
 
 }
