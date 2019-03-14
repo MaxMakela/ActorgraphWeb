@@ -91,7 +91,7 @@ export class SearchBoxComponent implements OnInit {
   getNameVariants(search) {
         var values = [];
         this.actors.find(item => {
-          if (this.levenshtein(item.Name, search)<=8) {
+          if (this.levenshtein(item.Name, search)<=3) {
             values.push(item.Name);
           }
         });
@@ -104,13 +104,14 @@ export class SearchBoxComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.firstActorName, this.secondActorName);
+    console.log(this.firstActor, this.secondActor);
     this.firstActor = this.searchActor(this.mistakesFix(this.firstActorName));
-    this.secondActor = this.searchActor(this.mistakesFix(this.firstActorName));
+    this.secondActor = this.searchActor(this.mistakesFix(this.secondActorName));
     
     console.log(this.mistakesFix(this.firstActorName));
     console.log(this.mistakesFix(this.firstActorName));
     console.log(this.getNameVariants(this.firstActorName));
+    console.log(this.getNameVariants(this.secondActorName));
   }
 
 }

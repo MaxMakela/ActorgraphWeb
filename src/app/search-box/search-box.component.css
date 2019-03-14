@@ -54,3 +54,8 @@
     text-transform: uppercase;
     font-weight: 500;
 }
+
+.selcls {
+    background-color: #2C3E50;
+    color: #ffffff;
+}
